@@ -8,7 +8,7 @@ class Application
       search_term = req.params["q"]
 
       if @@items.include?(search_term)
-        resp.write 
+        resp.write search_term.
       else
 
       end
