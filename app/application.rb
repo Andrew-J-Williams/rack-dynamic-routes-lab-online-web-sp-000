@@ -10,7 +10,7 @@ class Application
       if @@items.include?(search_term)
         resp.write search_term.price
       else
-
+        resp.write "Item not found"
       end
     else
       resp.write "Route not found"
