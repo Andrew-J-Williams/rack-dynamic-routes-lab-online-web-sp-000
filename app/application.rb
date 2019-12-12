@@ -4,14 +4,14 @@ class Application
     resp = Rack::Response.new
     req = Rack::Request.new(env)
 
-    if req.path == "/items"
-      search_term = req.params["q"]
-
-      if @@items.include?(search_term)
-        resp.write search_term.price
+    if req.path.match(/items\/.+/)
+      item_name = req.path.split("/items/").last
+      item = @@items.detect { |i| i.name == item_name }
+      if item
+        resp.write item.price
       else
         resp.write "Item not found"
-        resp.status = 404
+        resp.status = 400
       end
     else
       resp.write "Route not found"
