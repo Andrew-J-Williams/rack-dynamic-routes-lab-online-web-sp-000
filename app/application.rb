@@ -5,7 +5,7 @@ class Application
     req = Rack::Request.new(env)
 
     if req.path == "/items"
-      resp.write ""
+      resp.write "test"
     else
 
   end
